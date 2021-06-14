@@ -43,6 +43,14 @@ The data format is currently largely unknown:
 
 In any case, ffmpeg and other an make sense of it.
 
+## Automatically start when goggles are connected
+
+The modified version of the index.js call [auto.js](auto.js) will automatically detect when goggles are plugged in and attempt to start the video stream. The Goggles first must be already receiving a video from an Air Unit and that Air Unit depending on the manufacture might need to have "heat protection off" or be currently armed. All you need to do is run the `./start.sh` and plugin your goggles. You can leave this script running and disconnect your goggles. When you are ready to stream again just reconnect them. 
+
+### Multiple DJI goggles at the same time
+
+This also allows you to connect multiple goggles to the same laptop. In a second terminal run another instance of the `./start.sh` ( tested with 2 but more is possible not sure what the limit is ). 
+
 ## Todo
 ### Essential
 
@@ -56,9 +64,9 @@ In any case, ffmpeg and other an make sense of it.
 
  - ~~Set the output file path via cli~~
  - More error handling
- - Wait for Goggles to appear if not connected
+ - ~~Wait for Goggles to appear if not connected~~
  - Reconnect (and re send magic packet) when connection lost
- - Support multiple Goggles
+ - ~~Support multiple Goggles~~
  - Rewrite to C
 
 ## Why Nodejs?
