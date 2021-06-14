@@ -1,0 +1,1 @@
+node auto.js -o | ffplay -i - -fast -flags2 fast -fflags nobuffer -flags low_delay -strict experimental -vf "setpts=N/60/TB" -framedrop -sync ext -probesize 32 -analyzeduration 0
