@@ -40,7 +40,7 @@ var connect = (outpoint) => {
 
     outpoint.transfer(magic, function (error) {
         if (error) {
-            return
+            throw(error)
         }
         console.debug("send magic bytes")
     })
@@ -84,7 +84,7 @@ var attach = (device) => {
         var outpoint = interface.endpoints[0]
 
         connect(outpoint)
-
+        
         inpoint.addListener("data", function (data) {
             dataLength = data.length
             if (argv.o) {
@@ -108,7 +108,8 @@ var attach = (device) => {
             console.error(error)
         })
         inpoint.startPoll(argv.q, argv.s)
-    } catch {
+    } catch(err) {
+        console.log(err)
         console.error("Couldn't open Goggles USB device")
         return
     }
